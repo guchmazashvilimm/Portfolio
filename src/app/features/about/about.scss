@@ -1,0 +1,176 @@
+:host {
+  display: block;
+}
+
+.about-page {
+  min-height: 100vh;
+  padding: 110px 32px 130px;
+  background: #e9ccdd;
+}
+
+.about-page__content {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+}
+
+.about-header {
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #b55d84;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.about-header h1 {
+  margin: 0;
+  color: #242424;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  :host {
+    display: block;
+  }
+
+  :root {
+    --bg-1: #fff6fb;
+    --pink: #d96b9a;
+    --lavender: #c9b4f0;
+    --text: #231f20;
+    --muted: #61565f;
+    --card-bg: rgba(255,255,255,0.8);
+  }
+
+  .about-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 110px 24px 120px;
+    background: linear-gradient(180deg, var(--bg-1) 0%, #f7eef6 100%);
+    overflow: hidden;
+  }
+
+  .about-page__glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .about-page__glow--pink { background: var(--pink); top: -80px; left: -60px; }
+  .about-page__glow--lavender { background: var(--lavender); right: -80px; top: 60px; }
+
+  .about-container {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+  }
+
+  .about-hero {
+    max-width: 820px;
+    margin-bottom: 48px;
+  }
+
+  .about-hero__eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--pink);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .about-hero h1 {
+    margin: 0 0 18px 0;
+    color: var(--text);
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    line-height: 1.02;
+  }
+
+  .about-hero h1 span {
+    color: var(--pink);
+    display: inline-block;
+  }
+
+  .about-hero__intro {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .about-story,
+  .about-values,
+  .about-timeline,
+  .about-interests,
+  .about-personal {
+    margin-top: 48px;
+  }
+
+  .about-story__heading,
+  .about-values__heading,
+  .about-timeline__heading,
+  .about-interests__heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+
+  .about-story__heading span,
+  .about-values__heading span,
+  .about-timeline__heading span,
+  .about-interests__heading span { font-weight: 800; color: var(--pink); }
+
+  .about-story__content p { color: var(--muted); line-height: 1.8; margin: 0 0 18px 0; }
+
+  .about-values__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .about-value {
+    padding: 22px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    border: 1px solid rgba(35,31,32,0.06);
+  }
+
+  .about-value__number { color: var(--pink); font-weight: 800; display:block; margin-bottom:6px; }
+
+  .about-value h3 { margin: 0 0 10px 0; color: var(--text); font-size: 1.05rem; }
+  .about-value p { margin: 0; color: var(--muted); }
+
+  .timeline { display: grid; gap: 18px; }
+  .timeline-item { display: grid; grid-template-columns: 28px 80px 1fr; gap: 12px; align-items: start; }
+  .timeline-item__marker { width: 12px; height: 12px; border-radius: 50%; background: var(--pink); margin-top:6px; }
+  .timeline-item__year { color: var(--muted); font-weight:700; }
+  .timeline-item__content h3 { margin: 0 0 8px 0; }
+
+  .about-interests__list { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  .about-interests__list span { background: var(--card-bg); padding:8px 12px; border-radius:999px; color:var(--muted); font-size:0.95rem; }
+
+  .about-personal { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; margin-top: 56px; }
+  .about-personal__quote { background: var(--pink); color: #fff; padding: 28px; border-radius: 12px; position: relative; }
+  .about-personal__quote-mark { font-size: 48px; line-height: 0; display:block; opacity:0.95; }
+  .about-personal__text h2 { margin:0 0 12px 0; }
+  .about-personal__link { display:inline-flex; align-items:center; gap:8px; color:var(--pink); font-weight:800; text-decoration:none; }
+
+  @media (max-width: 880px) {
+    .about-container { padding: 0 12px; }
+    .about-values__grid { grid-template-columns: 1fr; }
+    .about-personal { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 18px 60px 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .about-hero h1 { font-size: 2rem; }
+    .about-page { padding: 80px 16px 100px; }
+  }
+}

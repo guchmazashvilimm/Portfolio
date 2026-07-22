@@ -1,0 +1,161 @@
+<section class="projects-page">
+  <div class="projects-page__glow projects-page__glow--lavender"></div>
+
+  <div class="projects-container">
+    
+    <!-- <div class="projects-toolbar">
+      <div
+        class="projects-filters"
+        aria-label="Filter projects"
+      >
+        @for (category of categories; track category) {
+          <button
+            type="button"
+            class="filter-button"
+            [class.filter-button--active]="
+              (selectedCategory$ | async) === category
+            "
+            (click)="selectCategory(category)"
+          >
+            {{ category }}
+          </button>
+        }
+      </div>
+
+      <p class="projects-toolbar__count">
+        @if (filteredProjects$ | async; as projects) {
+          {{ projects.length }}
+          {{ projects.length === 1 ? 'project' : 'projects' }}
+        }
+      </p>
+    </div> -->
+
+    @if (filteredProjects$ | async; as projects) {
+      <div class="projects-grid">
+        @for (
+          project of projects;
+          track project.id;
+          let index = $index
+        ) {
+          <article
+            class="project-card"
+            [class.project-card--featured]="project.featured"
+          >
+            <div
+              class="project-card__visual"
+              [class]="
+                'project-card__visual ' +
+                project.visualClass
+              "
+            >
+              <div class="project-window">
+                <div class="project-window__header">
+                  <div class="project-window__dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <span>
+                    project-{{ project.number }}.app
+                  </span>
+                </div>
+
+                <div class="project-window__body">
+                  <div class="project-window__sidebar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <div class="project-window__main">
+                    <div class="project-window__hero"></div>
+
+                    <div class="project-window__cards">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <span class="project-card__number">
+                {{ project.number }}
+              </span>
+            </div>
+
+            <div class="project-card__content">
+              <div class="project-card__top">
+                <span class="project-card__category">
+                  {{ project.category }}
+                </span>
+
+                @if (project.featured) {
+                  <span class="project-card__featured-label">
+                    Featured
+                  </span>
+                }
+              </div>
+
+              <h2>{{ project.title }}</h2>
+
+              <p class="project-card__description">
+                {{ project.description }}
+              </p>
+
+              <div class="project-card__technologies">
+                @for (
+                  technology of project.technologies;
+                  track technology
+                ) {
+                  <span>{{ technology }}</span>
+                }
+              </div>
+
+              <div class="project-card__actions">
+                @if (project.githubUrl) {
+                  <a
+                    [href]="project.githubUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link project-link--primary"
+                  >
+                    See code
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                }
+
+                @if (project.liveUrl) {
+                  <a
+                    [href]="project.liveUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                  >
+                    Live demo
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                }
+
+                @if (!project.githubUrl && !project.liveUrl) {
+                  <span class="project-card__coming-soon">
+                    Case study coming soon
+                  </span>
+                }
+              </div>
+            </div>
+          </article>
+        } @empty {
+          <div class="projects-empty">
+            <span>Nothing here yet.</span>
+
+            <p>
+              Try selecting another project category.
+            </p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>
